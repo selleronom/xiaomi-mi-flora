@@ -9,5 +9,3 @@ labels:
   org.opencontainers.image.description: 'Xiaomi Mi Flora add-on for Home Assistant'
   org.opencontainers.image.source: 'https://github.com/selleronom/xiaomi-mi-flora'
   org.opencontainers.image.licenses: 'Apache License 2.0'
-args:
-  MIFLORA-MQTT-DAEMON_VERSION: 'master'
