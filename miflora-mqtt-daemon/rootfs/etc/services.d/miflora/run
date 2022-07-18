@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the Xiaomi Mi Flora service
+# s6-overlay docs: https://github.com/just-containers/s6-overlay
+# ==============================================================================
+
+readonly CONFIG="/opt/miflora-config/config.ini"
+declare name
+declare mac
+
+export MQTT_USERNAME="$(bashio::services 'mqtt' 'username')"
+export MQTT_PASSWORD="$(bashio::services 'mqtt' 'password')"
+export MQTT_HOSTNAME="$(bashio::services 'mqtt' 'host')"
+export MQTT_PORT="$(bashio::services 'mqtt' 'port')"
+
+for miflora in $(bashio::config 'mifloras|keys'); do
+
+  name=$(bashio::config "mifloras[${miflora}].name")
+  mac=$(bashio::config "mifloras[${miflora}].mac")
+
+  bashio::log.info "Setting up miflora ${name}"
+  echo "${name} = ${mac}" >> "${CONFIG}"
+done
+
+exec python3 /opt/miflora-mqtt-daemon/miflora-mqtt-daemon.py --config /opt/miflora-config

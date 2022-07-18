@@ -1,6 +1,6 @@
 #!/usr/bin/env bashio
 # ==============================================================================
-# Take down the S6 supervision tree when example fails
+# Take down the S6 supervision tree when Xiaomi Mi Flora fails
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
@@ -9,4 +9,4 @@ if [[ "$1" -ne 0 ]] && [[ "$1" -ne 256 ]]; then
   exec /run/s6/basedir/bin/halt
 fi
 
-bashio::log.info "Service restart after closing"
+bashio::log.info "Xiaomi Mi Flora restart after closing"

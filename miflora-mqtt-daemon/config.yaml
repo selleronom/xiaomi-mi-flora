@@ -1,0 +1,26 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: Xiaomi Mi Flora
+version: '1.0.0'
+slug: miflora-mqtt-daemon
+description: MQTT daemon for Xiaomi Mi Flora
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+host_network: true
+options:
+  mifloras:
+    - name: Gurkan@Living
+      mac: C4:7C:8D:E0:F0:F0
+    - name: Tomato@Kitchen
+      mac: C4:7C:8D:E1:F1:F1
+schema:
+  mifloras:
+    - name: str
+      mac: str
+services:
+  - mqtt:need
+image: "ghcr.io/selleronom/{arch}-miflora-mqtt-daemon"
