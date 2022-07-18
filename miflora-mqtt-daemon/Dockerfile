@@ -2,7 +2,6 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Execute during the build of the image
-ARG MIFLORA-MQTT-DAEMON_VERSION BUILD_ARCH
 RUN \
     apt-get update && \
     apt-get install -y \
